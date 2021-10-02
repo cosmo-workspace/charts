@@ -1,4 +1,4 @@
-# helm charts
+[![Github](https://img.shields.io/badge/Github-repo-lightgrey)](https://github.com/cosmo-workspace/charts)
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/cosmo)](https://artifacthub.io/packages/search?repo=cosmo)
 
 helm chart repository for [COSMO](https://github.com/cosmo-workspace/cosmo)
