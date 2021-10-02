@@ -24,7 +24,7 @@ entries:
     version: 0.16.10
   cosmo-dashboard:
   - apiVersion: v2
-    appVersion: 0.16.8
+    appVersion: v0.16.10
     created: "2021-10-02T13:44:58.243025266Z"
     description: COSMO Dashboard Helm chart for Kubernetes
     digest: 5083e1b6b5c8c12d654d6c5809403402c8d8dc5a9240b5aa14c8ab1bbc9c35cc
