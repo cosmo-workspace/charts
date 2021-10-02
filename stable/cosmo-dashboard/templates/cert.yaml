@@ -1,0 +1,30 @@
+{{- if $.Values.cert.enableCertManager }}
+apiVersion: cert-manager.io/v1
+kind: Certificate
+metadata:
+  labels:
+    {{- include "cosmo-dashboard.labels" . | nindent 4 }}
+  name: cosmo-dashboard-cert
+  namespace: {{ .Release.Namespace }}
+spec:
+  dnsNames:
+    - cosmo-dashboard.{{.Release.Namespace}}.svc
+    - cosmo-dashboard.{{.Release.Namespace}}.svc.cluster.local
+    {{- if .Values.dnsName }}
+    - {{ .Values.dnsName }}
+    {{- end }}
+  {{- with .Values.cert.issuerRef }}
+  issuerRef:
+    {{- toYaml . | nindent 4 }}
+  {{- end }}
+  secretName: {{ .Values.cert.secretName }}
+---
+apiVersion: cert-manager.io/v1
+kind: ClusterIssuer
+metadata:
+  labels:
+    {{- include "cosmo-dashboard.labels" . | nindent 4 }}
+  name: cosmo-selfsigned-clusterissuer
+spec:
+  selfSigned: {}
+{{- end }}
