@@ -1,0 +1,47 @@
+apiVersion: v1
+entries:
+  cosmo-controller-manager:
+  - apiVersion: v2
+    appVersion: v0.16.8
+    created: "2021-10-02T14:03:12.427002216Z"
+    description: COSMO Controller Manager Helm chart for Kubernetes
+    digest: 1310dc328b24b5387625da83beb0e80514cffe256bb67780c45f91710924ba87
+    home: https://github.com/cosmo-workspace/cosmo
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    kubeVersion: '>= 1.19.0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: cosmo-controller-manager
+    sources:
+    - https://github.com/cosmo-workspace/cosmo/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/cosmo-controller-manager-0.16.8/cosmo-controller-manager-0.16.8.tgz
+    version: 0.16.8
+  cosmo-dashboard:
+  - apiVersion: v2
+    appVersion: v0.16.8
+    created: "2021-10-02T14:03:12.627859571Z"
+    description: COSMO Dashboard Helm chart for Kubernetes
+    digest: 65bde1b7291654a5f6d6615757b9be641075df67510adaaa118bb4fa6f39938b
+    home: https://github.com/cosmo-workspace/cosmo
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    kubeVersion: '>= 1.19.0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: cosmo-dashboard
+    sources:
+    - https://github.com/cosmo-workspace/cosmo/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/cosmo-dashboard-0.16.8/cosmo-dashboard-0.16.8.tgz
+    version: 0.16.8
+generated: "2021-10-02T14:03:12.627865371Z"
