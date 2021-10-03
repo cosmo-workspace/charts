@@ -1,7 +1,7 @@
 [![Artifact Hub](https://img.shields.io/endpoint?url=https://artifacthub.io/badge/repository/cosmo)](https://artifacthub.io/packages/search?repo=cosmo)
 
-# helm charts
-COSMO helm chart repository
+# charts
+helm chart repository for [COSMO](https://github.com/cosmo-workspace/cosmo)
 
 For general installation instructions, see [GETTING-STARTED.md](https://github.com/cosmo-workspace/cosmo/blob/main/docs/GETTING-STARTED.md).
 
