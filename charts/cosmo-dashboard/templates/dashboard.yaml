@@ -74,12 +74,18 @@ spec:
         - containerPort: 8443
           name: https
           protocol: TCP
+        resources:
+          {{- toYaml .Values.resources | nindent 10 }}
+        securityContext:
+          {{- toYaml .Values.securityContext | nindent 10 }}
         {{- if not .Values.insecure }}
         volumeMounts:
         - mountPath: /app/cert
           name: cert
           readOnly: true
         {{- end }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
       serviceAccountName: {{ include "cosmo-dashboard.serviceAccountName" . }}
       terminationGracePeriodSeconds: 10
       {{- if not .Values.insecure }}
