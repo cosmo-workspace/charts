@@ -23,7 +23,7 @@ spec:
       name: Template
       type: string
     - jsonPath: .status.phase
-      name: Pod-Phase
+      name: Phase
       type: string
     name: v1alpha1
     schema:
@@ -131,8 +131,6 @@ spec:
                 - kind
                 type: object
               phase:
-                type: string
-              reason:
                 type: string
               urls:
                 additionalProperties:
