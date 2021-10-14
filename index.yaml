@@ -43,6 +43,27 @@ entries:
     urls:
     - https://github.com/cosmo-workspace/charts/releases/download/cosmo-controller-manager-0.16.8/cosmo-controller-manager-0.16.8.tgz
     version: 0.16.8
+  - apiVersion: v2
+    appVersion: v0.1.0
+    created: "2021-10-14T09:09:12.82326446Z"
+    description: COSMO Controller Manager Helm chart for Kubernetes
+    digest: 6ba994b57d21da939ca5bff9a8dcc2a00d514c5701316e76bef744e6a71e3c5c
+    home: https://github.com/cosmo-workspace/cosmo
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: cosmo-controller-manager
+    sources:
+    - https://github.com/cosmo-workspace/cosmo/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/cosmo-controller-manager-0.1.0/cosmo-controller-manager-0.1.0.tgz
+    version: 0.1.0
   cosmo-dashboard:
   - apiVersion: v2
     appVersion: v0.17.0
@@ -86,4 +107,25 @@ entries:
     urls:
     - https://github.com/cosmo-workspace/charts/releases/download/cosmo-dashboard-0.16.8/cosmo-dashboard-0.16.8.tgz
     version: 0.16.8
-generated: "2021-10-12T11:57:43.152424751Z"
+  - apiVersion: v2
+    appVersion: v0.1.0
+    created: "2021-10-14T09:09:13.010754414Z"
+    description: COSMO Dashboard Helm chart for Kubernetes
+    digest: 0d84486db547dcd0579613b85130da05e8f214ef92db80e587e7949dfa10e4aa
+    home: https://github.com/cosmo-workspace/cosmo
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: cosmo-dashboard
+    sources:
+    - https://github.com/cosmo-workspace/cosmo/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/cosmo-dashboard-0.1.0/cosmo-dashboard-0.1.0.tgz
+    version: 0.1.0
+generated: "2021-10-14T09:09:13.010772214Z"
