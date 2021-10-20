@@ -25,6 +25,27 @@ entries:
   cosmo-dashboard:
   - apiVersion: v2
     appVersion: v0.1.0
+    created: "2021-10-20T16:40:46.771284069Z"
+    description: COSMO Dashboard Helm chart for Kubernetes
+    digest: fcea124a4e3d41774f632f510b6fc8292eb48ac42df8a472f038d3a8a6b3ccc1
+    home: https://github.com/cosmo-workspace/cosmo
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: cosmo-dashboard
+    sources:
+    - https://github.com/cosmo-workspace/cosmo/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/cosmo-dashboard-0.1.1/cosmo-dashboard-0.1.1.tgz
+    version: 0.1.1
+  - apiVersion: v2
+    appVersion: v0.1.0
     created: "2021-10-14T09:48:17.082265455Z"
     description: COSMO Dashboard Helm chart for Kubernetes
     digest: 3c78b6006d1698c2d26e4295101aa13b2e4775f5d216b24affd747644a90dc8f
@@ -44,4 +65,4 @@ entries:
     urls:
     - https://github.com/cosmo-workspace/charts/releases/download/cosmo-dashboard-0.1.0/cosmo-dashboard-0.1.0.tgz
     version: 0.1.0
-generated: "2021-10-14T09:48:17.082270556Z"
+generated: "2021-10-20T16:40:46.771292369Z"
