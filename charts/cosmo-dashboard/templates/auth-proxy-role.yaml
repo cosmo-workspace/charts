@@ -45,6 +45,9 @@ rules:
   - events
   verbs:
   - create
+  - get
+  - list
+  - watch
 - apiGroups:
   - ''
   resources:
