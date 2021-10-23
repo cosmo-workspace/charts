@@ -24,17 +24,8 @@ rules:
 - apiGroups:
   - cosmo.cosmo-workspace.github.io
   resources:
-  - instances
-  verbs:
-  - patch
-  - update
-  - get
-  - list
-  - watch
-- apiGroups:
-  - cosmo.cosmo-workspace.github.io
-  resources:
   - instances/status
+  - instances
   verbs:
   - get
   - list
@@ -51,16 +42,7 @@ rules:
 - apiGroups:
   - ''
   resources:
-  - services
   - secrets
-  verbs:
-  - get
-  - list
-  - watch
-- apiGroups:
-  - networking.k8s.io
-  resources:
-  - ingresses
   verbs:
   - get
   - list
