@@ -42,19 +42,10 @@ helm upgrade --install -n cosmo-system cosmo-dashboard cosmo/cosmo-dashboard --s
 | service.type | ["ClutserIP", "NodePort", "LoadBalancer"] (ClusterIP) | Service type of Dashboard |
 | service.port | SERVICE_PORT_NUMBER (8443) | Service port of Dashboard |
 | ingress.enabled | [true, false] (false) | Enable Ingress. See [`values.yaml`](https://github.com/cosmo-workspace/cosmo/blob/main/charts/stable/cosmo-dashboard/values.yaml) to other ingress configurations |
-| logLevel | ["info", "debug", 0..2 ] (info) | Loglevel for zap logger |
+| logLevel | ["info", "debug", 2(DEBUG_ALL) ] (info) | Loglevel for zap logger |
 | cert.enableCertManager | [true, false] (true) | Use cert-manager to gen cert. or you prepare TLS secret before install |
 | cert.dnsName | HOSTNAME (None) | cert-manager certificate DNS name in addition to `cosmo-dashboard.{{.Release.Namespace}}.svc` |
 | cert.secretName | SecretName (dashboard-server-cert) | TLS secret name for Dashboard |
 | insecure | [true, false] (false) | Use http server not https |
 
 See detail in [`values.yaml`](https://github.com/cosmo-workspace/charts/blob/main/charts/cosmo-dashboard/values.yaml)
-
-### LogLevel
-The log level numbers that can be used with the --logLevel option are as follows.
-
-```
-LEVEL_INFO         = 0 = "info"
-LEVEL_DEBUG        = 1 = "debug"
-LEVEL_DEBUG_ALL    = 2
-```
