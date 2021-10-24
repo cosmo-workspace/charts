@@ -2,13 +2,13 @@ apiVersion: v2
 name: cosmo-controller-manager
 description: COSMO Controller Manager Helm chart for Kubernetes
 type: application
-version: 0.1.1
+version: 0.1.2
 appVersion: v0.1.0
 kubeVersion: ">= 1.19.0-0"
 home: https://github.com/cosmo-workspace/cosmo
 icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
 sources:
-  - https://github.com/cosmo-workspace/cosmo/charts
+  - https://github.com/cosmo-workspace/charts
 maintainers:
   - name: jlandowner
     url: https://github.com/jlandowner
