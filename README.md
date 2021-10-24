@@ -23,7 +23,7 @@ helm upgrade --install -n cosmo-system --create-namespace cosmo-controller-manag
 
 | Option | Avairable values (default) | Description |
 |:-------|:----------------|:------------|
-| logLevel | ["info", "debug", 0..2 ] (info) | Loglevel for zap logger |
+| logLevel | ["info", "debug", 1..2 ] (info) | Loglevel for zap logger |
 | enableCertManager | [true, false] (true) | Use cert-manager to gen cert for Admission Webhook. Or use helm inner function |
 
 See detail in [`values.yaml`](https://github.com/cosmo-workspace/charts/blob/main/charts/cosmo-controller-manager/values.yaml)
