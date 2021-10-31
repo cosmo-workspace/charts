@@ -55,6 +55,28 @@ webhooks:
     resources:
     - workspaces
   sideEffects: None
+- admissionReviewVersions:
+  - v1
+  - v1beta1
+  clientConfig:
+    caBundle: {{ if not $.Values.enableCertManager -}}{{ $tls.caCert }}{{- else -}}Cg=={{ end }}
+    service:
+      name: cosmo-webhook-service
+      namespace: {{ .Release.Namespace }}
+      path: /mutate-workspace-cosmo-workspace-github-io-v1alpha1-user
+  failurePolicy: Fail
+  name: muser.kb.io
+  rules:
+  - apiGroups:
+    - workspace.cosmo-workspace.github.io
+    apiVersions:
+    - v1alpha1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - users
+  sideEffects: None
 ---
 apiVersion: admissionregistration.k8s.io/v1
 kind: ValidatingWebhookConfiguration
@@ -110,6 +132,28 @@ webhooks:
     - UPDATE
     resources:
     - workspaces
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
+  - v1beta1
+  clientConfig:
+    caBundle: {{ if not $.Values.enableCertManager -}}{{ $tls.caCert }}{{- else -}}Cg=={{ end }}
+    service:
+      name: cosmo-webhook-service
+      namespace: {{ .Release.Namespace }}
+      path: /validate-workspace-cosmo-workspace-github-io-v1alpha1-user
+  failurePolicy: Fail
+  name: vuser.kb.io
+  rules:
+  - apiGroups:
+    - workspace.cosmo-workspace.github.io
+    apiVersions:
+    - v1alpha1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - users
   sideEffects: None
 ---
 {{- if not $.Values.enableCertManager }}

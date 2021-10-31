@@ -36,6 +36,7 @@ rules:
   - workspace.cosmo-workspace.github.io
   resources:
   - workspaces
+  - users
   verbs:
   - create
   - delete
@@ -48,6 +49,7 @@ rules:
   - workspace.cosmo-workspace.github.io
   resources:
   - workspaces/status
+  - users/status
   verbs:
   - get
   - list
