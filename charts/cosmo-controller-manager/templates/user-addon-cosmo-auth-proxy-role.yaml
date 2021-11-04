@@ -2,6 +2,9 @@
 apiVersion: cosmo.cosmo-workspace.github.io/v1alpha1
 kind: Template
 metadata:
+  annotations:
+    cosmo/default-user-addon: "true"
+    cosmo/sysns-user-addon: {{ .Release.Namespace }}
   creationTimestamp: null
   labels:
     cosmo/type: user-addon
