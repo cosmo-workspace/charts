@@ -9,6 +9,8 @@ home: https://github.com/cosmo-workspace/cosmo
 icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
 sources:
   - https://github.com/cosmo-workspace/charts
+annotations:
+  artifacthub.io/prerelease: "true"
 maintainers:
   - name: jlandowner
     url: https://github.com/jlandowner
