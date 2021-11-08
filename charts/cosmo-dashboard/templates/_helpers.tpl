@@ -65,7 +65,7 @@ Create the name of the service account to use
 Generate certificates
 */}}
 {{- define "cosmo-dashboard.gen-certs" -}}
-{{- $altNames := list ( printf "%s.%s.svc" "cosmo-dashboard" .Release.Namespace ) ( printf "%s.%s.svc.cluster.local" "cosmo-dashboard" .Release.Namespace ) -}}
+{{- $altNames := list ( printf "%s.%s.svc" "cosmo-dashboard" .Release.Namespace ) ( printf "%s.%s.svc.cluster.local" "cosmo-dashboard" .Release.Namespace ) ( printf "%s" .Values.dnsName ) -}}
 {{- $ca := genCA "cosmo-dashboard-ca" 3650 -}}
 {{- $cert := genSignedCert ( include "cosmo-dashboard.fullname" . ) nil $altNames 3650 $ca -}}
 caCert: {{ $ca.Cert | b64enc }}
