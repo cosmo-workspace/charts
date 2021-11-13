@@ -11,9 +11,9 @@ image:
   tag: ""
 
 imageK8sRbacProxy:
-  repository: quay.io/brancz/kube-rbac-proxy
+  repository: gcr.io/kubebuilder/kube-rbac-proxy
   pullPolicy: IfNotPresent
-  tag: "v0.11.0"
+  tag: "v0.8.0"
 
 imagePullSecrets: []
 nameOverride: ""
