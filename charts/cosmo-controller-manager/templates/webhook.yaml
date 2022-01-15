@@ -35,6 +35,28 @@ webhooks:
   sideEffects: None
 - admissionReviewVersions:
   - v1
+  - v1alpha1
+  clientConfig:
+    caBundle: {{ if not $.Values.enableCertManager -}}{{ $tls.caCert }}{{- else -}}Cg=={{ end }}
+    service:
+      name: cosmo-webhook-service
+      namespace: {{ .Release.Namespace }}
+      path: /mutate-cosmo-cosmo-workspace-github-io-v1alpha1-template
+  failurePolicy: Fail
+  name: mtemplate.kb.io
+  rules:
+  - apiGroups:
+    - cosmo.cosmo-workspace.github.io
+    apiVersions:
+    - v1alpha1
+    operations:
+    - CREATE
+    - UPDATE
+    resources:
+    - templates
+  sideEffects: None
+- admissionReviewVersions:
+  - v1
   - v1beta1
   clientConfig:
     caBundle: {{ if not $.Values.enableCertManager -}}{{ $tls.caCert }}{{- else -}}Cg=={{ end }}
