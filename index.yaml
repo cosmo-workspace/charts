@@ -4,6 +4,35 @@ entries:
   - annotations:
       artifacthub.io/prerelease: "false"
     apiVersion: v2
+    appVersion: v0.4.0
+    created: "2022-03-03T10:16:09.405181912Z"
+    description: COSMO Controller Manager Helm chart for Kubernetes
+    digest: 37ba672fb44023579d0e6b7efe1eeefd7d029a4bb0ae9d77a16bf3731e01396b
+    home: https://github.com/cosmo-workspace/cosmo
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    - kubernetes
+    - webide
+    - code-server
+    - theia
+    - dev-environment
+    - dev-container
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: cosmo-controller-manager
+    sources:
+    - https://github.com/cosmo-workspace/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/cosmo-controller-manager-0.4.0/cosmo-controller-manager-0.4.0.tgz
+    version: 0.4.0
+  - annotations:
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
     appVersion: v0.3.0
     created: "2022-01-16T03:58:06.164855555Z"
     description: COSMO Controller Manager Helm chart for Kubernetes
@@ -280,6 +309,35 @@ entries:
     - https://github.com/cosmo-workspace/charts/releases/download/cosmo-controller-manager-0.1.0/cosmo-controller-manager-0.1.0.tgz
     version: 0.1.0
   cosmo-dashboard:
+  - annotations:
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: v0.4.0
+    created: "2022-03-03T10:16:09.580191466Z"
+    description: COSMO Dashboard Helm chart for Kubernetes
+    digest: a12638cc01dd592ba1d32fe54e2735cc2b143581ca35d3a35c08c3896a13a544
+    home: https://github.com/cosmo-workspace/cosmo
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    - kubernetes
+    - webide
+    - code-server
+    - theia
+    - dev-environment
+    - dev-container
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: cosmo-dashboard
+    sources:
+    - https://github.com/cosmo-workspace/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/cosmo-dashboard-0.4.0/cosmo-dashboard-0.4.0.tgz
+    version: 0.4.0
   - annotations:
       artifacthub.io/prerelease: "false"
     apiVersion: v2
@@ -579,4 +637,4 @@ entries:
     urls:
     - https://github.com/cosmo-workspace/charts/releases/download/cosmo-dashboard-0.1.0/cosmo-dashboard-0.1.0.tgz
     version: 0.1.0
-generated: "2022-01-16T03:58:06.335201291Z"
+generated: "2022-03-03T10:16:09.580302968Z"
