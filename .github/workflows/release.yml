@@ -15,22 +15,27 @@ jobs:
       - name: Checkout cosmo
         uses: actions/checkout@v3
         with:
-          repository: oruharo/cosmo
+          repository: cosmo-workspace/cosmo
           path: cosmo
-          fetch-depth: 0
+
+      - name: mv cosmo/charts
+        run: |
+          mv cosmo/charts .
+          pwd && ls -l
 
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
           git config user.email "$GITHUB_ACTOR@users.noreply.github.com"
+
       - name: Install Helm
         uses: azure/setup-helm@v1
         with:
           version: v3.4.1
 
       - name: Run chart-releaser
-        uses: helm/chart-releaser-action@v1.3.0
+        uses: helm/chart-releaser-action@v1.4.0
         with:
-          charts_dir: cosmo/charts
+          charts_dir: charts
         env:
           CR_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
