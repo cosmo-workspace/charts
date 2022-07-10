@@ -23,6 +23,12 @@ jobs:
           mv cosmo/charts .
           pwd && ls -l
 
+      - name: Commit updates
+        uses: EndBug/add-and-commit@v7
+        with:
+          branch: main
+          message: "update charts"
+
       - name: Configure Git
         run: |
           git config user.name "$GITHUB_ACTOR"
