@@ -20,6 +20,7 @@ jobs:
 
       - name: mv cosmo/charts
         run: |
+          rm -rf charts
           mv cosmo/charts .
           rm -rf cosmo
           pwd && ls -l
