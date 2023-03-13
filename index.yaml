@@ -11,6 +11,16 @@ entries:
     urls:
     - https://github.com/cosmo-workspace/charts/releases/download/code-server-0.1.0/code-server-0.1.0.tgz
     version: 0.1.0
+  - apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-03-13T09:25:41.208827659Z"
+    description: A Helm chart for Kubernetes
+    digest: 4fc6714f8c1eddf758eb88f89172d823ed8d47ee5fedc9bef46b17274157d324
+    name: code-server
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/code-server-0.0.1/code-server-0.0.1.tgz
+    version: 0.0.1
   cosmo-controller-manager:
   - annotations:
       artifacthub.io/prerelease: "false"
@@ -938,4 +948,4 @@ entries:
     urls:
     - https://github.com/cosmo-workspace/charts/releases/download/cosmo-dashboard-0.1.0/cosmo-dashboard-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-13T09:16:41.362337859Z"
+generated: "2023-03-13T09:25:41.616931409Z"
