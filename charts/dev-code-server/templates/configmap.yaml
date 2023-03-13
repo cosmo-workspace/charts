@@ -44,8 +44,8 @@ data:
     bash /data/configmap/init.sh &
 
     /usr/bin/entrypoint.sh \
-        --auth=none \
-        --bind-addr=0.0.0.0:18080 \
+        --auth=$CS_AUTH_TYPE \
+        --bind-addr=0.0.0.0:$CS_LISTEN_PORT \
         .
   init.sh: |-
     #!/bin/bash
