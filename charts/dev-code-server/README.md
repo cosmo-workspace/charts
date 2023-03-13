@@ -11,4 +11,4 @@ Example
 helm upgrade --install -n cosmo-dev --create-namespace code-server cosmo/dev-code-server
 ```
 
-See options in [`values.yaml`](https://github.com/cosmo-workspace/cosmo/blob/main/charts/dev-code-server/values.yaml)
+See options in [`values.yaml`](https://github.com/cosmo-workspace/charts/blob/main/charts/dev-code-server/values.yaml)
