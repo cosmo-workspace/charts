@@ -99,13 +99,13 @@ data:
         fi
     }
 
-    installExtentionIfAbsent vscode-icons-team.vscode-icons
-    installExtentionIfAbsent hediet.vscode-drawio
-    installExtentionIfAbsent donjayamanne.githistory
-    installExtentionIfAbsent msjsdiag.debugger-for-chrome
-    installExtentionIfAbsent Arjun.swagger-viewer
-    installExtentionIfAbsent redhat.vscode-yaml
     installExtentionIfAbsent golang.Go
+    installExtentionIfAbsent redhat.vscode-yaml
+    installExtentionIfAbsent vscode-icons-team.vscode-icons
+    installExtentionIfAbsent donjayamanne.githistory
+    installExtentionIfAbsent Arjun.swagger-viewer
+    installExtentionIfAbsent msjsdiag.debugger-for-chrome
+    installExtentionIfAbsent hediet.vscode-drawio
 
     ls -l $TMP_EXT
 
