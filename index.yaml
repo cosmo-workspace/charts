@@ -927,4 +927,34 @@ entries:
     urls:
     - https://github.com/cosmo-workspace/charts/releases/download/cosmo-dashboard-0.1.0/cosmo-dashboard-0.1.0.tgz
     version: 0.1.0
-generated: "2023-03-13T09:28:08.789152983Z"
+  dev-code-server:
+  - annotations:
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-03-13T10:19:49.528556881Z"
+    description: All-in-one code-server image for cosmo development
+    digest: 3e390a1c9a51bfba6f55efc413a51ff4743883d936586624fa937864219e4063
+    home: https://github.com/cosmo-workspace/cosmo-dev
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    - kubernetes
+    - webide
+    - code-server
+    - theia
+    - dev-environment
+    - dev-container
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: dev-code-server
+    sources:
+    - https://github.com/cosmo-workspace/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/dev-code-server-0.0.1/dev-code-server-0.0.1.tgz
+    version: 0.0.1
+generated: "2023-03-13T10:19:49.528712584Z"
