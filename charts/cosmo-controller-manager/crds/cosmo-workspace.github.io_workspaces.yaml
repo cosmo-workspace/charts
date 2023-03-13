@@ -5,31 +5,21 @@ metadata:
   annotations:
     controller-gen.kubebuilder.io/version: v0.10.0
   creationTimestamp: null
-  name: users.workspace.cosmo-workspace.github.io
+  name: workspaces.cosmo-workspace.github.io
 spec:
-  group: workspace.cosmo-workspace.github.io
+  group: cosmo-workspace.github.io
   names:
-    kind: User
-    listKind: UserList
-    plural: users
-    singular: user
-  scope: Cluster
+    kind: Workspace
+    listKind: WorkspaceList
+    plural: workspaces
+    shortNames:
+    - ws
+    singular: workspace
+  scope: Namespaced
   versions:
   - additionalPrinterColumns:
-    - jsonPath: .spec.displayName
-      name: Display-Name
-      type: string
-    - jsonPath: .spec.role
-      name: Role
-      type: string
-    - jsonPath: .spec.authType
-      name: Auth-Type
-      type: string
-    - jsonPath: .spec.addons
-      name: Addons
-      type: string
-    - jsonPath: .status.namespace.name
-      name: Namespace
+    - jsonPath: .spec.template.name
+      name: Template
       type: string
     - jsonPath: .status.phase
       name: Phase
@@ -37,7 +27,7 @@ spec:
     name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: User is the Schema for the workspaces API
+        description: Workspace is the Schema for the workspaces API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -52,39 +42,72 @@ spec:
           metadata:
             type: object
           spec:
+            description: WorkspaceSpec defines the desired state of Workspace
             properties:
-              addons:
+              network:
                 items:
+                  description: NetworkRule is an abstract network configuration rule
+                    for workspace
                   properties:
-                    template:
-                      description: TemplateRef defines template to use in Instance
-                        creation
-                      properties:
-                        clusterScoped:
-                          type: boolean
-                        name:
-                          type: string
-                      required:
-                      - name
-                      type: object
-                    vars:
-                      additionalProperties:
-                        type: string
-                      type: object
+                    group:
+                      type: string
+                    host:
+                      type: string
+                    httpPath:
+                      type: string
+                    name:
+                      type: string
+                    portNumber:
+                      format: int32
+                      type: integer
+                    public:
+                      type: boolean
+                    targetPortNumber:
+                      format: int32
+                      type: integer
+                  required:
+                  - httpPath
+                  - name
+                  - portNumber
+                  - public
                   type: object
                 type: array
-              authType:
-                description: UserAuthType enums
-                type: string
-              displayName:
-                type: string
-              role:
-                description: UserRole enums
-                type: string
+              replicas:
+                format: int64
+                type: integer
+              template:
+                description: TemplateRef defines template to use in Instance creation
+                properties:
+                  name:
+                    type: string
+                required:
+                - name
+                type: object
+              vars:
+                additionalProperties:
+                  type: string
+                type: object
+            required:
+            - template
             type: object
           status:
+            description: WorkspaceStatus has status of Workspace
             properties:
-              namespace:
+              config:
+                description: Config defines workspace-dependent configuration
+                properties:
+                  deploymentName:
+                    type: string
+                  ingressName:
+                    type: string
+                  mainServicePortName:
+                    type: string
+                  serviceName:
+                    type: string
+                  urlbase:
+                    type: string
+                type: object
+              instance:
                 description: ObjectRef is a reference of resource which is created
                   by the Instance
                 properties:
@@ -123,13 +146,14 @@ spec:
                   uid:
                     description: 'UID of the referent. More info: https://kubernetes.io/docs/concepts/overview/working-with-objects/names/#uids'
                     type: string
-                  updateTimestamp:
-                    format: date-time
-                    type: string
                 type: object
                 x-kubernetes-map-type: atomic
               phase:
                 type: string
+              urls:
+                additionalProperties:
+                  type: string
+                type: object
             type: object
         type: object
     served: true
