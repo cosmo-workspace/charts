@@ -1,0 +1,111 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{ include "code-server.fullname" . }}
+  labels:
+    {{- include "code-server.labels" . | nindent 4 }}
+spec:
+  replicas: 1
+  strategy:
+    type: Recreate
+  selector:
+    matchLabels:
+      {{- include "code-server.selectorLabels" . | nindent 6 }}
+  template:
+    metadata:
+      {{- with .Values.podAnnotations }}
+      annotations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      labels:
+        {{- include "code-server.selectorLabels" . | nindent 8 }}
+    spec:
+      {{- with .Values.imagePullSecrets }}
+      imagePullSecrets:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      serviceAccountName: {{ include "code-server.serviceAccountName" . }}
+      securityContext:
+        {{- toYaml .Values.podSecurityContext | nindent 8 }}
+      containers:
+        - name: code-server
+          securityContext:
+            {{- toYaml .Values.securityContext | nindent 12 }}
+          image: "{{ .Values.image.repository }}:{{ .Values.image.tag | default .Chart.AppVersion }}"
+          imagePullPolicy: {{ .Values.image.pullPolicy }}
+          command:
+            - bash
+            - /data/configmap/entrypoint.sh
+          volumeMounts:
+            - name: data
+              mountPath: /home/coder
+              subPath: home/coder/
+            - name: data
+              mountPath: /projects
+              subPath: projects/
+            - name: files
+              mountPath: /data/configmap/
+          ports:
+            - name: http
+              containerPort: {{ .Values.service.port }}
+              protocol: TCP
+            - name: k3d
+              containerPort: {{ .Values.service.k3dPort }}
+              protocol: TCP
+          startupProbe:
+            httpGet:
+              path: /
+              port: http
+            failureThreshold: 30
+            periodSeconds: 10
+          resources:
+            {{- toYaml .Values.resources | nindent 12 }}
+        {{- if .Values.dind.enabled }}
+        - name: dind-daemon
+          image: "{{ .Values.dind.image.repository }}:{{ .Values.dind.image.tag }}"
+          imagePullPolicy: {{ .Values.dind.image.pullPolicy }}
+          args:
+            {{- toYaml .Values.dind.args | nindent 12 }}
+          env:
+            {{- toYaml .Values.dind.env | nindent 12 }}
+          volumeMounts:
+            - name: dind
+              mountPath: /var/lib/docker
+              subPath: var_docker/
+          resources:
+            {{- toYaml .Values.dind.resources | nindent 12 }}
+          securityContext:
+            privileged: true
+        {{- end }}
+      {{- with .Values.nodeSelector }}
+      nodeSelector:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.affinity }}
+      affinity:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      {{- with .Values.tolerations }}
+      tolerations:
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
+      volumes:
+        - name: files
+          configMap:
+            name: files
+        - name: data
+          {{- if .Values.persistentVolumeClaim.enabled }}
+          persistentVolumeClaim:
+            claimName: code-server-data
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
+        {{- if .Values.dind.enabled }}
+        - name: dind
+          {{- if .Values.dind.persistentVolumeClaim.enabled }}
+          persistentVolumeClaim:
+            claimName: dind-data
+          {{- else }}
+          emptyDir: {}
+          {{- end }}
+        {{- end }}

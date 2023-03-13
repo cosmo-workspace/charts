@@ -1,0 +1,163 @@
+apiVersion: v1
+data:
+  .bash_aliases: ""
+  .bash_logout: |
+    # ~/.bash_logout: executed by bash(1) when login shell exits.
+
+    # when leaving the console clear the screen to increase privacy
+
+    if [ "$SHLVL" = 1 ]; then
+        [ -x /usr/bin/clear_console ] && /usr/bin/clear_console -q
+    fi
+  .bash_profile: |+
+    # Go
+    export PATH=/usr/local/go/bin:$HOME/go/bin:$PATH
+
+    # home bin
+    mkdir -p $HOME/bin
+    export PATH=$HOME/bin:$HOME/.local/bin:$PATH
+
+    # git verified commit
+    export GPG_TTY=$(tty)
+
+    # create-react-app@5 hot reload bug
+    export WDS_SOCKET_PORT=0
+
+    # .bashrc ==========================================
+    . ~/.bashrc
+    #===================================================
+
+  .bashrc: "# ~/.bashrc: executed by bash(1) for non-login shells.\n# see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)\n# for examples\n#===================================================\n#  ※管理者のみ編集可   \n#  ※起動時上書き\n#===================================================\n\n# If not running interactively, don't do anything\ncase $- in\n    *i*) ;;\n      *) return;;\nesac\n\n# don't put duplicate lines or lines starting with space in the history.\n# See bash(1) for more options\nHISTCONTROL=ignoreboth\n\n# append to the history file, don't overwrite it\nshopt -s histappend\n\n# for setting history length see HISTSIZE and HISTFILESIZE in bash(1)\nHISTSIZE=1000\nHISTFILESIZE=2000\n\n# check the window size after each command and, if necessary,\n# update the values of LINES and COLUMNS.\nshopt -s checkwinsize\n\n# If set, the pattern \"**\" used in a pathname expansion context will\n# match all files and zero or more directories and subdirectories.\n#shopt -s globstar\n\n# make less more friendly for non-text input files, see lesspipe(1)\n#[ -x /usr/bin/lesspipe ] && eval \"$(SHELL=/bin/sh lesspipe)\"\n\n# set variable identifying the chroot you work in (used in the prompt below)\nif [ -z \"${debian_chroot:-}\" ] && [ -r /etc/debian_chroot ]; then\n    debian_chroot=$(cat /etc/debian_chroot)\nfi\n\n# set a fancy prompt (non-color, unless we know we \"want\" color)\ncase \"$TERM\" in\n    xterm-color|*-256color) color_prompt=yes;;\nesac\n\n# uncomment for a colored prompt, if the terminal has the capability; turned\n# off by default to not distract the user: the focus in a terminal window\n# should be on the output of commands, not on the prompt\n#force_color_prompt=yes\n\nif [ -n \"$force_color_prompt\" ]; then\n    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then\n\t# We have color support; assume it's compliant with Ecma-48\n\t# (ISO/IEC-6429). (Lack of such support is extremely rare, and such\n\t# a case would tend to support setf rather than setaf.)\n\tcolor_prompt=yes\n    else\n\tcolor_prompt=\n    fi\nfi\n\nSHORT_HOSTNAME=${HOSTNAME%-*-*-*}\nif [ \"$color_prompt\" = yes ]; then\n    PS1='${debian_chroot:+($debian_chroot)}\\[\\033[01;32m\\]\\u@${SHORT_HOSTNAME}\\[\\033[00m\\]:\\[\\033[01;34m\\]\\W\\[\\033[00m\\]\\$ '\nelse\n    PS1='${debian_chroot:+($debian_chroot)}\\u@${SHORT_HOSTNAME}:\\W\\$ '\nfi\nunset color_prompt force_color_prompt\n\n# If this is an xterm set the title to user@host:dir\ncase \"$TERM\" in\nxterm*|rxvt*)\n    PS1=\"\\[\\e]0;${debian_chroot:+($debian_chroot)}\\u@\\h: \\w\\a\\]$PS1\"\n    ;;\n*)\n    ;;\nesac\n\n# enable color support of ls and also add handy aliases\nif [ -x /usr/bin/dircolors ]; then\n    test -r ~/.dircolors && eval \"$(dircolors -b ~/.dircolors)\" || eval \"$(dircolors -b)\"\n    alias ls='ls --color=auto'\n    alias dir='dir --color=auto'\n    alias vdir='vdir --color=auto'\n\n    alias grep='grep --color=auto'\n    alias fgrep='fgrep --color=auto'\n    alias egrep='egrep --color=auto'\nfi\n\n# colored GCC warnings and errors\n#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'\n\n# some more ls aliases\nalias ll='ls -l'\nalias la='ls -A'\nalias l='ls -CF'\nalias vi=vim\n\nalias code='code-server'\nalias k='kubectl'\n# Alias definitions.\n# You may want to put all your additions into a separate file like\n# ~/.bash_aliases, instead of adding them here directly.\n# See /usr/share/doc/bash-doc/examples in the bash-doc package.\n\nif [ -f ~/.bash_aliases ]; then\n    . ~/.bash_aliases\nfi\n\n# enable programmable completion features (you don't need to enable\n# this, if it's already enabled in /etc/bash.bashrc and /etc/profile\n# sources /etc/bash.bashrc).\nif ! shopt -oq posix; then\n  if [ -f /usr/share/bash-completion/bash_completion ]; then\n    . /usr/share/bash-completion/bash_completion\n  elif [ -f /etc/bash_completion ]; then\n    . /etc/bash_completion\n  fi\nfi\n"
+  .profile: |
+    # ~/.profile: executed by Bourne-compatible login shells.
+
+    if [ "$BASH" ]; then
+      if [ -f ~/.bashrc ]; then
+        . ~/.bashrc
+      fi
+    fi
+
+    mesg n || true
+  entrypoint.sh: |-
+    #!/bin/bash
+
+    bash /data/configmap/init.sh &
+
+    /usr/bin/entrypoint.sh \
+        --auth=none \
+        --bind-addr=0.0.0.0:18080 \
+        .
+  init.sh: |-
+    #!/bin/bash
+
+    # change home directory owner in persistent volume
+    sudo chown 1000:1000 /home/coder
+
+    # change ssh key permission
+    chmod 600 ~/.ssh/*
+
+    #------------------------------------------------------------------------
+    # copy files
+    #------------------------------------------------------------------------
+    FILES_DIR=/data/configmap
+    CS_CONFIG=$HOME/.local/share/code-server
+    CS_USER=$CS_CONFIG/User
+    mkdir -p $CS_USER
+
+    copyFileIfAbsent () {
+        [[ ! -f "$HOME/$1" ]] && (echo Creating $2$1 && cp "$FILES_DIR/$1" $2)
+    }
+
+    copyFileIfAbsent .bashrc       $HOME/
+    copyFileIfAbsent .profile      $HOME/
+    copyFileIfAbsent .bash_aliases $HOME/
+    copyFileIfAbsent .bash_profile $HOME/
+    copyFileIfAbsent .bash_logout  $HOME/
+    copyFileIfAbsent settings.json $CS_USER/
+
+    #------------------------------------------------------------------------
+    # install extensions
+    #------------------------------------------------------------------------
+    CS_EXT=$CS_CONFIG/extensions
+    TMP_EXT=/tmp/extensions
+
+    mkdir -p $CS_EXT
+    mkdir -p $TMP_EXT && cd $TMP_EXT
+
+    installExtentionIfAbsent () {
+        VSIX=$1
+        VSIX_DIR=${VSIX%.*}
+        VSIX_DIR=${VSIX_DIR,,}
+
+        if [ ! -d $CS_EXT/$VSIX_DIR ]; then
+            echo "** installing $VSIX..."
+            # ovsx get $VSIX
+            code-server --install-extension $VSIX
+            echo "** $VSIX installed."
+        else
+            echo "** $VSIX is already installed."
+        fi
+    }
+
+    installExtentionIfAbsent vscode-icons-team.vscode-icons
+    installExtentionIfAbsent hediet.vscode-drawio
+    installExtentionIfAbsent donjayamanne.githistory
+    installExtentionIfAbsent msjsdiag.debugger-for-chrome
+    installExtentionIfAbsent Arjun.swagger-viewer
+    installExtentionIfAbsent redhat.vscode-yaml
+    installExtentionIfAbsent golang.Go
+
+    ls -l $TMP_EXT
+
+    rm -rf $TMP_EXT
+  settings.json: |-
+    {
+        "workbench.colorTheme": "Visual Studio Dark",
+        "files.autoSave": "off",
+        "typescript.tsdk": "/usr/local/lib/node_modules/typescript/lib",
+        "extensions.autoCheckUpdates": false,
+        "extensions.autoUpdate": false,
+        "workbench.iconTheme": "vscode-icons",
+        "vsicons.dontShowNewVersionMessage": true,
+        "python.pythonPath": "/bin/python3",
+        "python.linting.pylintEnabled": true,
+        "l13Diff.enableTrash": "off",
+        "l13Diff.exclude": [
+            "**/.DS_Store",
+            "**/.git",
+            "**/.hg",
+            "**/.svn",
+            "**/CVS",
+            "**/node_modules",
+            "**/*.bk",
+            "**/dist",
+            "**/bin",
+            "**/coverage"
+        ],
+        "terminal.integrated.profiles.linux": {
+            "bash": {
+                "path": "bash",
+                "args": [
+                    "-l"
+                ],
+                "icon": "terminal-bash"
+            },
+            "zsh": {
+                "path": "zsh"
+            },
+            "fish": {
+                "path": "fish"
+            },
+            "tmux": {
+                "path": "tmux",
+                "icon": "terminal-tmux"
+            },
+            "pwsh": {
+                "path": "pwsh",
+                "icon": "terminal-powershell"
+            },
+        },
+    }
+kind: ConfigMap
+metadata:
+  name: files

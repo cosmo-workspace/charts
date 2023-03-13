@@ -1,0 +1,31 @@
+{{- if .Values.persistentVolumeClaim.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: code-server-data
+  labels:
+    {{- include "code-server.labels" . | nindent 4 }}
+spec:
+  storageClassName: {{ .Values.persistentVolumeClaim.storageClassName }}
+  accessModes:
+    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: {{ .Values.persistentVolumeClaim.requestSize }}
+{{- end }}
+---
+{{- if and .Values.dind.enabled .Values.dind.persistentVolumeClaim.enabled }}
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: dind-data
+  labels:
+    {{- include "code-server.labels" . | nindent 4 }}
+spec:
+  storageClassName: {{ .Values.dind.persistentVolumeClaim.storageClassName }}
+  accessModes:
+    - "ReadWriteOnce"
+  resources:
+    requests:
+      storage: {{ .Values.dind.persistentVolumeClaim.requestSize }}
+{{- end }}
