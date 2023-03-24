@@ -38,7 +38,7 @@ spec:
             - /data/configmap/entrypoint.sh
           env:
             - name: CS_LISTEN_PORT
-              value: {{ .Values.service.port }}
+              value: "{{ .Values.service.port }}"
             {{- toYaml .Values.env | nindent 12 }}
           volumeMounts:
             - name: data
