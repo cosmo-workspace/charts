@@ -2,7 +2,7 @@ apiVersion: v2
 name: dev-code-server
 description: All-in-one code-server image for cosmo development
 type: application
-version: 0.0.1
+version: 0.0.2
 appVersion: "0.0.1"
 kubeVersion: ">= 1.19.0-0"
 home: https://github.com/cosmo-workspace/cosmo-dev
