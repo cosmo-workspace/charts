@@ -3,7 +3,7 @@
 # Declare variables to be passed into your templates.
 
 image:
-  repository: ghcr.io/cosmo/dev-code-server
+  repository: ghcr.io/cosmo-workspace/dev-code-server
   pullPolicy: IfNotPresent
   # Overrides the image tag whose default is the chart appVersion.
   tag: v0.0.1-4.10.0
