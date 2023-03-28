@@ -49,6 +49,9 @@ spec:
               subPath: projects/
             - name: files
               mountPath: /data/configmap/
+            {{- range .Values.extraVolumeMounts }}
+            - {{- toYaml . | nindent 14 }}
+            {{- end }}
           ports:
             - name: http
               containerPort: {{ .Values.service.port }}
@@ -76,6 +79,9 @@ spec:
             - name: dind
               mountPath: /var/lib/docker
               subPath: var_docker/
+            {{- range .Values.dind.extraVolumeMounts }}
+            - {{- toYaml . | nindent 14 }}
+            {{- end }}
           resources:
             {{- toYaml .Values.dind.resources | nindent 12 }}
           securityContext:
@@ -112,4 +118,7 @@ spec:
           {{- else }}
           emptyDir: {}
           {{- end }}
+        {{- end }}
+        {{- range .Values.extraVolumes }}
+        - {{- toYaml . | nindent 10 }}
         {{- end }}

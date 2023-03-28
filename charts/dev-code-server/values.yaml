@@ -95,6 +95,10 @@ tolerations: []
 
 affinity: {}
 
+extraVolumeMounts: []
+
+extraVolumes: []
+
 dind:
   enabled: true
   image:
@@ -110,3 +114,4 @@ dind:
     enabled: true
     storageClassName: ""
     requestSize: 20Gi
+  extraVolumeMounts: []
