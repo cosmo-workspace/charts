@@ -6,12 +6,18 @@ metadata:
   labels:
     {{- include "code-server.labels" . | nindent 4 }}
 spec:
-  storageClassName: {{ .Values.persistentVolumeClaim.storageClassName }}
+  {{- with .Values.persistentVolumeClaim }}
+  {{- if .storageClassName }}
+  storageClassName: {{ .storageClassName }}
+  {{- else if .volumeName }}
+  volumeName: {{ .volumeName }}
+  {{- end }}
   accessModes:
     - "ReadWriteOnce"
   resources:
     requests:
-      storage: {{ .Values.persistentVolumeClaim.requestSize }}
+      storage: {{ .requestSize }}
+  {{- end }}
 {{- end }}
 ---
 {{- if and .Values.dind.enabled .Values.dind.persistentVolumeClaim.enabled }}
@@ -22,10 +28,16 @@ metadata:
   labels:
     {{- include "code-server.labels" . | nindent 4 }}
 spec:
-  storageClassName: {{ .Values.dind.persistentVolumeClaim.storageClassName }}
+  {{- with .Values.dind.persistentVolumeClaim }}
+  {{- if .storageClassName }}
+  storageClassName: {{ .storageClassName }}
+  {{- else if .volumeName }}
+  volumeName: {{ .volumeName }}
+  {{- end }}
   accessModes:
     - "ReadWriteOnce"
   resources:
     requests:
-      storage: {{ .Values.dind.persistentVolumeClaim.requestSize }}
+      storage: {{ .requestSize }}
+  {{- end }}
 {{- end }}

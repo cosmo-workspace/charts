@@ -87,6 +87,7 @@ resources: {}
 persistentVolumeClaim:
   enabled: true
   storageClassName: ""
+  volumeName: ""
   requestSize: 20Gi
 
 nodeSelector: {}
@@ -104,7 +105,7 @@ dind:
   image:
     repository: docker
     pullPolicy: IfNotPresent
-    tag: 20.10.18-dind
+    tag: dind
   args: []
   env:
     - name: DOCKER_TLS_CERTDIR
@@ -113,5 +114,6 @@ dind:
   persistentVolumeClaim:
     enabled: true
     storageClassName: ""
+    volumeName: ""
     requestSize: 20Gi
   extraVolumeMounts: []
