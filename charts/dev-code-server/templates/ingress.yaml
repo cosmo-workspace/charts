@@ -62,7 +62,7 @@ spec:
         paths:
           - backend:
               service:
-                name: k3d
+                name: {{ $fullName }}
                 port:
                   name: k3d
             path: /
