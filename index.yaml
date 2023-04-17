@@ -927,7 +927,52 @@ entries:
     urls:
     - https://github.com/cosmo-workspace/charts/releases/download/cosmo-dashboard-0.1.0/cosmo-dashboard-0.1.0.tgz
     version: 0.1.0
+  cosmo-traefik:
+  - apiVersion: v2
+    appVersion: 21.2.0
+    created: "2023-04-17T05:57:02.613290224Z"
+    dependencies:
+    - condition: traefik.enabled
+      name: traefik
+      repository: https://traefik.github.io/charts
+      version: 21.2.0
+    description: A Helm chart for Kubernetes
+    digest: b61fc6b1adfb5171618cfa4a5f464ddbd7ed6a4394cecbcca61d133210ffe938
+    name: cosmo-traefik
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/cosmo-traefik-0.1.0/cosmo-traefik-0.1.0.tgz
+    version: 0.1.0
   dev-code-server:
+  - annotations:
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 0.0.1
+    created: "2023-04-17T05:57:02.829277937Z"
+    description: All-in-one code-server image for cosmo development
+    digest: f0931df6b8b7683bcda5f085bef29af4e21e5bd5922c4c1dd64a243c924fda3d
+    home: https://github.com/cosmo-workspace/cosmo-dev
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    - kubernetes
+    - webide
+    - code-server
+    - theia
+    - dev-environment
+    - dev-container
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: dev-code-server
+    sources:
+    - https://github.com/cosmo-workspace/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/dev-code-server-0.0.4/dev-code-server-0.0.4.tgz
+    version: 0.0.4
   - annotations:
       artifacthub.io/prerelease: "false"
     apiVersion: v2
@@ -1015,4 +1060,4 @@ entries:
     urls:
     - https://github.com/cosmo-workspace/charts/releases/download/dev-code-server-0.0.1/dev-code-server-0.0.1.tgz
     version: 0.0.1
-generated: "2023-03-30T14:36:18.074194631Z"
+generated: "2023-04-17T05:57:02.829440838Z"
