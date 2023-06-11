@@ -4,6 +4,35 @@ entries:
   - annotations:
       artifacthub.io/prerelease: "false"
     apiVersion: v2
+    appVersion: v0.9.0
+    created: "2023-06-11T15:49:40.183307736Z"
+    description: COSMO Controller Manager Helm chart for Kubernetes
+    digest: d0094e05042e86ca74f65797211a6dee91e019dc68d1c53d1a5c9561985ac37e
+    home: https://github.com/cosmo-workspace/cosmo
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    - kubernetes
+    - webide
+    - code-server
+    - theia
+    - dev-environment
+    - dev-container
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: cosmo-controller-manager
+    sources:
+    - https://github.com/cosmo-workspace/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/cosmo-controller-manager-0.9.0/cosmo-controller-manager-0.9.0.tgz
+    version: 0.9.0
+  - annotations:
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
     appVersion: v0.8.0
     created: "2023-05-18T19:58:15.357257862Z"
     description: COSMO Controller Manager Helm chart for Kubernetes
@@ -483,6 +512,35 @@ entries:
     - https://github.com/cosmo-workspace/charts/releases/download/cosmo-controller-manager-0.1.0/cosmo-controller-manager-0.1.0.tgz
     version: 0.1.0
   cosmo-dashboard:
+  - annotations:
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: v0.9.0
+    created: "2023-06-11T15:49:40.31894635Z"
+    description: COSMO Dashboard Helm chart for Kubernetes
+    digest: e65e2869b2019402a075cd1480e01d43a5277a0b2c7bc9492ada46aeaf4ff264
+    home: https://github.com/cosmo-workspace/cosmo
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    - kubernetes
+    - webide
+    - code-server
+    - theia
+    - dev-environment
+    - dev-container
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: cosmo-dashboard
+    sources:
+    - https://github.com/cosmo-workspace/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/cosmo-dashboard-0.9.0/cosmo-dashboard-0.9.0.tgz
+    version: 0.9.0
   - annotations:
       artifacthub.io/prerelease: "false"
     apiVersion: v2
@@ -986,6 +1044,40 @@ entries:
     - https://github.com/cosmo-workspace/charts/releases/download/cosmo-dashboard-0.1.0/cosmo-dashboard-0.1.0.tgz
     version: 0.1.0
   cosmo-traefik:
+  - annotations:
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
+    appVersion: 23.0.1
+    created: "2023-06-11T15:49:40.448149203Z"
+    dependencies:
+    - condition: traefik.enabled
+      name: traefik
+      repository: https://traefik.github.io/charts
+      version: 23.0.1
+    description: COSMO traefij Helm chart for Kubernetes
+    digest: 0f05c80a813f2c0f8e15eb765036c34317bfd756f357d5ec14f680d454ec6d2d
+    home: https://github.com/cosmo-workspace/cosmo
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    - kubernetes
+    - webide
+    - code-server
+    - theia
+    - dev-environment
+    - dev-container
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: cosmo-traefik
+    sources:
+    - https://github.com/cosmo-workspace/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/cosmo-traefik-0.9.0/cosmo-traefik-0.9.0.tgz
+    version: 0.9.0
   - apiVersion: v2
     appVersion: 21.2.0
     created: "2023-04-17T05:57:02.613290224Z"
@@ -1118,4 +1210,4 @@ entries:
     urls:
     - https://github.com/cosmo-workspace/charts/releases/download/dev-code-server-0.0.1/dev-code-server-0.0.1.tgz
     version: 0.0.1
-generated: "2023-05-18T19:58:15.521115426Z"
+generated: "2023-06-11T15:49:40.448372808Z"
