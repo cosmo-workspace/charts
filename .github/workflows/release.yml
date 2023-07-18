@@ -20,7 +20,7 @@ jobs:
 
       - name: mv cosmo/charts
         run: |
-          rm -rf charts/cosmo-controller-manager charts/cosmo-dashboard charts/cosmo-traefik
+          rm -rf charts/cosmo
           mv cosmo/charts/* charts/
           rm -rf cosmo
           pwd && ls -l
