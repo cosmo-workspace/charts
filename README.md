@@ -16,7 +16,7 @@ helm repo add cosmo https://cosmo-workspace.github.io/charts
 Example
 
 ```sh
-helm upgrade --install -n cosmo-system --create-namespace cosmo cosmo/cosmo --domain=YOURDOMAIN.com
+helm upgrade --install -n cosmo-system --create-namespace cosmo cosmo/cosmo --set domain=YOURDOMAIN.com
 ```
 
 See [cosmo](https://github.com/cosmo-workspace/cosmo/tree/main/charts/cosmo) for more options
