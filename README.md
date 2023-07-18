@@ -13,22 +13,11 @@ helm repo add cosmo https://cosmo-workspace.github.io/charts
 
 ## Install
 
-### COSMO Controller Manager
-
 Example
 
 ```sh
-helm upgrade --install -n cosmo-system --create-namespace cosmo-controller-manager cosmo/cosmo-controller-manager
+helm upgrade --install -n cosmo-system --create-namespace cosmo cosmo/cosmo --domain=YOURDOMAIN.com
 ```
 
-See [cosmo-controller-manager](https://github.com/cosmo-workspace/cosmo/tree/main/charts/cosmo-controller-manager) for more options
+See [cosmo](https://github.com/cosmo-workspace/cosmo/tree/main/charts/cosmo) for more options
 
-### COSMO Dashboard
-
-Example
-
-```sh
-helm upgrade --install -n cosmo-system cosmo-dashboard cosmo/cosmo-dashboard --set service.type=LoadBalancer
-```
-
-See [cosmo-dashboard](https://github.com/cosmo-workspace/cosmo/tree/main/charts/cosmo-dashboard) for more opitons
