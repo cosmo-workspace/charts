@@ -163,6 +163,9 @@ dashboard:
   tls:
     enabled: true
 
+  inclusterServer:
+    port: 8080
+
   resources:
     limits:
       cpu: 100m
@@ -192,7 +195,7 @@ dashboard:
     # but when you are using ArgoCD, these secret keys are changed every sync
     # because it uses 'helm template' command and lookup function does not work.
     secretKeys:
-      immutable: true
+      immutable: false
       COOKIE_HASHKEY:
       COOKIE_BLOCKKEY:
       COOKIE_SESSION_NAME:
@@ -251,9 +254,11 @@ traefik:
   namespaceOverride: cosmo-system
 
   # Enable plugins
-  experimental:
-    plugins:
-      enabled: true
+  # local plugin is not supported by this options on 28.0.0
+  # so add configs manually via additionalVolumes, additionalVolumeMounts and additionalArguments
+  # experimental:
+  #   plugins:
+  #     enabled: true
 
   deployment:
     # Installing local plugins by init containers
@@ -269,10 +274,14 @@ traefik:
     additionalVolumes:
       - name: local-plugins
         emptyDir: {}
+      - name: plugins
+        emptyDir: {}
 
   additionalVolumeMounts:
     - name: local-plugins
       mountPath: /plugins-local
+    - name: plugins
+      mountPath: "/plugins-storage"
 
   # Load cosmo-auth plugin
   additionalArguments:
