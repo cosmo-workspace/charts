@@ -4,6 +4,40 @@ entries:
   - annotations:
       artifacthub.io/prerelease: "true"
     apiVersion: v2
+    appVersion: v1.0.0-rc7
+    created: "2024-06-20T15:26:06.269162848Z"
+    dependencies:
+    - condition: traefik.enabled
+      name: traefik
+      repository: https://traefik.github.io/charts
+      version: 28.0.0
+    description: COSMO Helm chart for Kubernetes
+    digest: b8440d78fb5f66b54f216b9af22f9f9e14d95f1701f00e6f44a5bad5b1fb0f13
+    home: https://github.com/cosmo-workspace/cosmo
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    - kubernetes
+    - webide
+    - code-server
+    - vscode
+    - dev-environment
+    - dev-containers
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: cosmo
+    sources:
+    - https://github.com/cosmo-workspace/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/cosmo-1.0.0-rc7/cosmo-1.0.0-rc7.tgz
+    version: 1.0.0-rc7
+  - annotations:
+      artifacthub.io/prerelease: "true"
+    apiVersion: v2
     appVersion: v1.0.0-rc6
     created: "2024-05-22T23:26:51.536289516Z"
     dependencies:
@@ -1512,4 +1546,4 @@ entries:
     urls:
     - https://github.com/cosmo-workspace/charts/releases/download/dev-code-server-0.0.1/dev-code-server-0.0.1.tgz
     version: 0.0.1
-generated: "2024-05-22T23:26:51.536511408Z"
+generated: "2024-06-20T15:26:06.269361999Z"
