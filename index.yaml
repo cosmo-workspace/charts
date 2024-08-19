@@ -1467,6 +1467,35 @@ entries:
   - annotations:
       artifacthub.io/prerelease: "false"
     apiVersion: v2
+    appVersion: 0.0.2
+    created: "2024-08-19T14:41:26.794367007Z"
+    description: All-in-one code-server image for cosmo development
+    digest: 72a9b1064c2d9bcbe8e710f9e3edd467f4902f4bf46d2bdcae7e39eabf8131ab
+    home: https://github.com/cosmo-workspace/cosmo-dev
+    icon: https://raw.githubusercontent.com/cosmo-workspace/cosmo/main/logo/logo-square-small.png
+    keywords:
+    - cosmo
+    - kubernetes
+    - webide
+    - code-server
+    - theia
+    - dev-environment
+    - dev-container
+    kubeVersion: '>= 1.19.0-0'
+    maintainers:
+    - email: jlandowner8@gmail.com
+      name: jlandowner
+      url: https://github.com/jlandowner
+    name: dev-code-server
+    sources:
+    - https://github.com/cosmo-workspace/charts
+    type: application
+    urls:
+    - https://github.com/cosmo-workspace/charts/releases/download/dev-code-server-0.0.6/dev-code-server-0.0.6.tgz
+    version: 0.0.6
+  - annotations:
+      artifacthub.io/prerelease: "false"
+    apiVersion: v2
     appVersion: 0.0.1
     created: "2024-08-14T15:03:13.366412536Z"
     description: All-in-one code-server image for cosmo development
@@ -1609,4 +1638,4 @@ entries:
     urls:
     - https://github.com/cosmo-workspace/charts/releases/download/dev-code-server-0.0.1/dev-code-server-0.0.1.tgz
     version: 0.0.1
-generated: "2024-08-14T15:03:13.366591152Z"
+generated: "2024-08-19T14:41:26.794556077Z"
